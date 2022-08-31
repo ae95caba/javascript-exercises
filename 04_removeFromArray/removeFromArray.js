@@ -1,12 +1,14 @@
-const removeFromArray = function(array,position1,position2) {
+const removeFromArray = function(array,position) {
+    for (i=1;i<arguments.length;i++ ) {      
+        if (arguments[i]>=0 && arguments[i]<=array.length){
             
-    if (position1>=0 && position1<=array.length){
-        array.splice((position1-1),1);
-    }
-    if (position2>=0 && position2<=array.length){
-        array.splice((position2-1),1);
-    }
-        return array;
+            array.splice((arguments[i]-1),1);
+            
+            }
+        }   
+
+    return array;
+    
 };
 
 // Do not edit below this line
