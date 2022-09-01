@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const removeFromArray = function(array,position) {
+            //turns arguemtens array into a real array
+          
+            const args = Array.prototype.slice.call(arguments);
+            
+            //creates an array with only the positions parameters, that way i can sort them in descening order
+            //so i can start removing form the higher position that can pass the if "test", that way
+            // i can remove every position starting from the starter parameter array, no matter the order of removal
+
+            var arrayPositions = args.slice(1);
+            //-------------------------- 6
+            
+            // i do this since i could be any parameter including a string 
+            //i will be all the parameters after the first
+            for (i=0; i<arrayPositions.length; i++){
+                if (typeof arrayPositions[i] === 'string'){ // if a parameter is an string
+                    //I will remplace the string with its place number in the parameter's array
+                    
+                    arrayPositions[i]= array.indexOf(arrayPositions[i]); //finds the string parameter in the parameter's array using indexOf 
+                    //returning its number's place . Finally that number is used to remplace such string
+                    // that way I can have an array(arrayPositions) that is only  numbers of positions so i can sort it later
+                    
+                    //-----short: transforms the string into its number's place in the parameter string----
+                }
+            }
+            //--------------------------6
+            arrayPositions.sort();
+            arrayPositions.reverse();
+            
+            //this for makes i turn into every position parameter
+            for (i=0;i<arrayPositions.length;i++ ) {    
+                //if the current parameter (i) is a position that exists do  
+                if (arrayPositions[i]>=0 && arrayPositions[i]<=array.length){
+
+                    
+                    //remove that position from the array parameter
+                    array.splice((arrayPositions[i]-1),1);
+                    
+                    }
+            }   
+        
+            return array;
+        }
+            
+            
+        
+        
+        
+        console.log(removeFromArray([2,6,"pez",1,4],1,2,"pez"));
+    </script>
+</body>
+</html>
