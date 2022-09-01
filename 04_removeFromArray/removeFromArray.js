@@ -15,13 +15,19 @@ const removeFromArray = function(array,position) {
     for (i=0; i<arrayPositions.length; i++){
         
         if (typeof arrayPositions[i] === 'string' && array.indexOf(arrayPositions[i])+1){ // if a parameter is an string
+            //and exists in the parameters array
             //I will remplace the string with its place number in the parameter's array
+            //----PROBLEM: if is a string a doesnt exists it will remove a place in a array later
             
             arrayPositions[i]= array.indexOf(arrayPositions[i])+1; //finds the string parameter in the parameter's array using indexOf 
             //returning its number's place. --------- THEEE +1 IS NEEDED SO THE NEXT FOR CAN WORK ------------ . Finally that number is used to remplace such string
             // that way I can have an array(arrayPositions) that is only  numbers of positions so i can sort it later
             
             //-----short: transforms the string into its number's place in the parameter string----
+        }
+
+        if (typeof arrayPositions[i] === 'string' && ! array.indexOf(arrayPositions[i])+1){
+            arrayPositions.splice(i,1);
         }
         
     }
